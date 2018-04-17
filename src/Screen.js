@@ -3,9 +3,15 @@ import './Screen.css';
 
 class Screen extends Component {
 
+  screenChangedHandler = (event) => {
+    this.props.screenChanged(event);
+  }
+
   render() {
     return (
-      <textarea className="screen" value={this.props.text}></textarea>
+      <textarea
+        onChange={this.screenChangedHandler}
+        className="screen" value={this.props.text}></textarea>
     );
   }
 }

@@ -12,6 +12,12 @@ class App extends Component {
     }
   }
 
+  screenChangedHandler = (event) => {
+    this.setState({
+      text: event.target.value
+    });
+  }
+
   keyPressedHandler = (value, type) => {
     console.log(type);
     this.setState((prevState, props) => ({
@@ -36,7 +42,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Screen text={this.state.text} />
+        <Screen
+          screenChanged={this.screenChangedHandler}
+          text={this.state.text} />
         <Keyboard keyPressed={this.keyPressedHandler} />
       </div>
     );
