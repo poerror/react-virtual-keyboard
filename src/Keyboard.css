@@ -1,0 +1,23 @@
+.keyboard {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #b4b4b4;
+  box-sizing: border-box;
+  background-color: #d9d9d9;
+}
+
+.keyboard .row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.keyboard .navigations {
+  flex: 1;
+}
+
+.keyboard .navigations .navigations-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -3px;
+}

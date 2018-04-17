@@ -1,0 +1,53 @@
+.key {
+  flex: 1;
+  border-radius: 5px;
+  font-size: 15px;
+  border: 1px solid #b4b4b4;
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin: 0 1px 2px;
+  cursor: pointer;
+}
+
+.key.tab,
+.key.delete {
+  flex: 1.5;
+}
+
+.key.capslock,
+.key.return {
+  flex: 2;
+}
+
+.key.shift {
+  flex: 1.75;
+}
+
+.key.spacebar {
+  flex: 5;
+}
+
+.key.navigation {
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 6px;
+}
+
+.key.navigation.top {
+  flex: initial;
+}
+
+.key.active {
+  padding-top: 13px;
+  padding-bottom: 4px;
+  border-top: 1px solid rgba(0, 0, 0, .4);
+  border-right: 1px none transparent;
+  border-bottom: 1px solid transparent;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(270deg, hsla(206, 9%, 85%, .22), hsla(206, 9%, 85%, .22));
+  background-image: linear-gradient(180deg, hsla(206, 9%, 85%, .22), hsla(206, 9%, 85%, .22));
+  color: #aaa;
+}
