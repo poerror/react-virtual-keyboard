@@ -4,69 +4,74 @@ import './Keyboard.css';
 
 class Keyboard extends Component {
 
+  keyPressedHandler = (value, type) => {
+    this.props.keyPressed(value, type);
+  }
+
   render() {
     return (
       <div className="keyboard">
         <div className="row">
-          <Key value="§" />
-          <Key value="1" />
-          <Key value="2" />
-          <Key value="3" />
-          <Key value="4" />
-          <Key value="5" />
-          <Key value="6" />
-          <Key value="7" />
-          <Key value="8" />
-          <Key value="9" />
-          <Key value="0" />
-          <Key value="-" />
-          <Key value="=" />
+          {/* // TODO: repeated keys, possible use array as ['§', '1', '2'...]/map...  */}
+          <Key value="§" keyPressed={this.keyPressedHandler} />
+          <Key value="1" keyPressed={this.keyPressedHandler} />
+          <Key value="2" keyPressed={this.keyPressedHandler} />
+          <Key value="3" keyPressed={this.keyPressedHandler} />
+          <Key value="4" keyPressed={this.keyPressedHandler} />
+          <Key value="5" keyPressed={this.keyPressedHandler} />
+          <Key value="6" keyPressed={this.keyPressedHandler} />
+          <Key value="7" keyPressed={this.keyPressedHandler} />
+          <Key value="8" keyPressed={this.keyPressedHandler} />
+          <Key value="9" keyPressed={this.keyPressedHandler} />
+          <Key value="0" keyPressed={this.keyPressedHandler} />
+          <Key value="-" keyPressed={this.keyPressedHandler} />
+          <Key value="=" keyPressed={this.keyPressedHandler} />
           <Key value="delete" type="delete" />
         </div>
         <div className="row">
-          <Key value="tab" type="tab" />
-          <Key value="q" />
-          <Key value="w" />
-          <Key value="e" />
-          <Key value="r" />
-          <Key value="t" />
-          <Key value="y" />
-          <Key value="u" />
-          <Key value="i" />
-          <Key value="o" />
-          <Key value="p" />
-          <Key value="[" />
-          <Key value="]" />
-          <Key value="'\'" />
+          <Key value="&#09;" name="tab" type="tab" keyPressed={this.keyPressedHandler} />
+          <Key value="q" keyPressed={this.keyPressedHandler} />
+          <Key value="w" keyPressed={this.keyPressedHandler} />
+          <Key value="e" keyPressed={this.keyPressedHandler} />
+          <Key value="r" keyPressed={this.keyPressedHandler} />
+          <Key value="t" keyPressed={this.keyPressedHandler} />
+          <Key value="y" keyPressed={this.keyPressedHandler} />
+          <Key value="u" keyPressed={this.keyPressedHandler} />
+          <Key value="i" keyPressed={this.keyPressedHandler} />
+          <Key value="o" keyPressed={this.keyPressedHandler} />
+          <Key value="p" keyPressed={this.keyPressedHandler} />
+          <Key value="[" keyPressed={this.keyPressedHandler} />
+          <Key value="]" keyPressed={this.keyPressedHandler} />
+          <Key value="&#92;" keyPressed={this.keyPressedHandler} />
         </div>
         <div className="row">
           <Key value="capslock" type="capslock" />
-          <Key value="a" />
-          <Key value="s" />
-          <Key value="d" />
-          <Key value="f" />
-          <Key value="g" />
-          <Key value="h" />
-          <Key value="j" />
-          <Key value="k" />
-          <Key value="l" />
-          <Key value=";" />
-          <Key value="'" />
-          <Key value="return" type="return" />
+          <Key value="a" keyPressed={this.keyPressedHandler} />
+          <Key value="s" keyPressed={this.keyPressedHandler} />
+          <Key value="d" keyPressed={this.keyPressedHandler} />
+          <Key value="f" keyPressed={this.keyPressedHandler} />
+          <Key value="g" keyPressed={this.keyPressedHandler} />
+          <Key value="h" keyPressed={this.keyPressedHandler} />
+          <Key value="j" keyPressed={this.keyPressedHandler} />
+          <Key value="k" keyPressed={this.keyPressedHandler} />
+          <Key value="l" keyPressed={this.keyPressedHandler} />
+          <Key value=";" keyPressed={this.keyPressedHandler} />
+          <Key value="'" keyPressed={this.keyPressedHandler} />
+          <Key value="&#10;" name="return" keyPressed={this.keyPressedHandler} type="return" />
         </div>
         <div className="row">
           <Key value="shift" type="shift" />
-          <Key value="`" />
-          <Key value="z" />
-          <Key value="x" />
-          <Key value="c" />
-          <Key value="v" />
-          <Key value="b" />
-          <Key value="n" />
-          <Key value="m" />
-          <Key value="," />
-          <Key value="." />
-          <Key value="/" />
+          <Key value="`" keyPressed={this.keyPressedHandler} />
+          <Key value="z" keyPressed={this.keyPressedHandler} />
+          <Key value="x" keyPressed={this.keyPressedHandler} />
+          <Key value="c" keyPressed={this.keyPressedHandler} />
+          <Key value="v" keyPressed={this.keyPressedHandler} />
+          <Key value="b" keyPressed={this.keyPressedHandler} />
+          <Key value="n" keyPressed={this.keyPressedHandler} />
+          <Key value="m" keyPressed={this.keyPressedHandler} />
+          <Key value="," keyPressed={this.keyPressedHandler} />
+          <Key value="." keyPressed={this.keyPressedHandler} />
+          <Key value="/" keyPressed={this.keyPressedHandler} />
           <Key value="shift" type="shift" />
         </div>
         <div className="row">
@@ -74,7 +79,7 @@ class Keyboard extends Component {
           <Key value="ctrl" />
           <Key value="option" />
           <Key value="cmd" />
-          <Key value="spacebar" type="spacebar" />
+          <Key value=" " name="spacebar" keyPressed={this.keyPressedHandler} type="spacebar" />
           <Key value="cmd" />
           <Key value="alt" />
           <div className="navigations">

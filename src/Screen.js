@@ -5,8 +5,7 @@ class Screen extends Component {
 
   render() {
     return (
-      <div className="screen">
-      </div>
+      <textarea className="screen" value={this.props.text}></textarea>
     );
   }
 }
