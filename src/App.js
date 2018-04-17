@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      currentState: 'default'
     }
   }
 
@@ -19,24 +20,33 @@ class App extends Component {
   }
 
   keyPressedHandler = (value, type) => {
-    console.log(type);
-    this.setState((prevState, props) => ({
-      text: prevState.text + value
-    }));
-    // TODO: prepared for key functions
-    // switch (type) {
-    //   case 'char':
-    //     this.setState((prevState, props) => ({
-    //       text: prevState.text + value
-    //     }));
-    //     break;
-    //   case 'delete':
-    //     this.setState((prevState, props) => ({
-    //       text: prevState.text + value
-    //     }));
-    //     break;
-    //   default:
-    // }
+    switch (type) {
+      case 'char':
+      case 'tab':
+      case 'spacebar':
+      case 'return':
+        this.setState((prevState, props) => ({
+          text: prevState.text + value
+        }));
+        break;
+      case 'delete':
+        this.setState((prevState, props) => ({
+          text: prevState.text.slice(0, -1)
+        }));
+        break;
+      case 'shift':
+      case 'capslock':
+      case 'cmd':
+      case 'ctrl':
+      case 'alt':
+      case 'fn':
+      this.setState((prevState, props) => ({
+        currentState: (prevState.currentState !== type) ? type : 'default'
+      }));
+        break;
+      default:
+        throw new Error('Undefined Key Type');
+    }
   }
 
   render() {
@@ -45,7 +55,9 @@ class App extends Component {
         <Screen
           screenChanged={this.screenChangedHandler}
           text={this.state.text} />
-        <Keyboard keyPressed={this.keyPressedHandler} />
+        <Keyboard
+          currentState={this.state.currentState}
+          keyPressed={this.keyPressedHandler} />
       </div>
     );
   }
