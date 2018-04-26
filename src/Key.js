@@ -3,19 +3,32 @@ import './Key.css';
 
 class Key extends Component {
 
+  // TODO: Keys are updated all the time, it's not neccessery
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return false;
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevProps.currentState);
+  // }
+  // componentWillReceiveProps(nextProps) {
+  //
+  // }
+
   keyPressedHandler = () => {
-    const value = this.props.value ? this.props.value : '';
-    const type = this.props.type ? this.props.type : 'char';
-    this.props.keyPressed(value, type);
+    this.props.keyPressed(this.props.value, this.props.code);
   }
 
   render() {
-    const name = this.props.name ? this.props.name : this.props.value;
-    const activeClass = this.props.active ? 'active' : null;
+    const keyShowName = this.props.name ? this.props.name : this.props.value;
+    let classes = `key key-${this.props.code}`;
+    if (this.props.currentKey === this.props.code || this.props.currentState === this.props.value) {
+      classes += " active";
+    }
+
     return (
       <a
         onClick={this.keyPressedHandler}
-        className={['key', this.props.type, activeClass].join(' ')}>{name}</a>
+        className={classes}>{keyShowName}</a>
     );
   }
 }

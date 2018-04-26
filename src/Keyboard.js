@@ -1,66 +1,92 @@
 import React, { Component } from 'react';
 import Key from './Key';
 import keyboardLayout from './keyboardLayout';
+import keyCodes from './keyCodes';
 import './Keyboard.css';
 
 class Keyboard extends Component {
 
-  keyPressedHandler = (value, type) => {
-    this.props.keyPressed(value, type);
+  keyPressedHandler = (value, code) => {
+    this.props.keyPressed(value, code);
   }
 
-  currentKey = (key) => {
-    const newKey = keyboardLayout[key][this.props.currentState];
-    return (newKey === undefined) ? keyboardLayout[key]['default'] : newKey ;
+  codeToValue = (keyCode) => {
+    const newKey = keyCodes[keyCode][this.props.currentState];
+    return (newKey !== undefined) ? newKey : keyCodes[keyCode]['default'];
+  }
+
+  codeToName = (keyCode) => {
+    const newKey = keyCodes[keyCode]['name'];
+    return (newKey !== undefined) ? newKey : null;
   }
 
   render() {
     return (
       <div className="keyboard">
+
         <div className="row">
-          {['§','1','2','3','4','5','6','7','8','9','0','-','='].map(key => (
-            <Key key={key} value={this.currentKey(key)} keyPressed={this.keyPressedHandler} />
+          {keyboardLayout[1].map((keyCode, i) => (
+            <Key
+              key={i}
+              code={keyCode}
+              name={this.codeToName(keyCode)}
+              value={this.codeToValue(keyCode)}
+              keyPressed={this.keyPressedHandler}
+              currentKey={this.props.currentKey}
+              currentState={this.props.currentState} />
           ))}
-          <Key name="delete" type="delete" keyPressed={this.keyPressedHandler} />
         </div>
+
         <div className="row">
-          <Key value="&#09;" name="tab" type="tab" keyPressed={this.keyPressedHandler} />
-          {['q','w','e','r','t','y','u','i','o','p','[',']','\\'].map(key => (
-            <Key key={key} value={this.currentKey(key)} keyPressed={this.keyPressedHandler} />
+          {keyboardLayout[2].map((keyCode, i) => (
+            <Key
+              key={i}
+              code={keyCode}
+              name={this.codeToName(keyCode)}
+              value={this.codeToValue(keyCode)}
+              keyPressed={this.keyPressedHandler}
+              currentKey={this.props.currentKey}
+              currentState={this.props.currentState} />
           ))}
         </div>
+
         <div className="row">
-          <Key name="capslock" type="capslock" keyPressed={this.keyPressedHandler} active={(this.props.currentState === 'capslock')} />
-          {['a','s','d','f','g','h','j','k','l',';',"'"].map(key => (
-            <Key key={key} value={this.currentKey(key)} keyPressed={this.keyPressedHandler} />
+          {keyboardLayout[3].map((keyCode, i) => (
+            <Key
+              key={i}
+              code={keyCode}
+              name={this.codeToName(keyCode)}
+              value={this.codeToValue(keyCode)}
+              keyPressed={this.keyPressedHandler}
+              currentKey={this.props.currentKey}
+              currentState={this.props.currentState} />
           ))}
-          <Key value="&#10;" name="return" keyPressed={this.keyPressedHandler} type="return" />
         </div>
+
         <div className="row">
-          <Key name="shift" type="shift" keyPressed={this.keyPressedHandler} active={(this.props.currentState === 'shift')} />
-          {['`','z','x','c','v','b','n','m',',','.','/'].map(key => (
-            <Key key={key} value={this.currentKey(key)} keyPressed={this.keyPressedHandler} />
+          {keyboardLayout[4].map((keyCode, i) => (
+            <Key
+              key={i}
+              code={keyCode}
+              name={this.codeToName(keyCode)}
+              value={this.codeToValue(keyCode)}
+              keyPressed={this.keyPressedHandler}
+              currentKey={this.props.currentKey}
+              currentState={this.props.currentState} />
           ))}
-          <Key value="shift" type="shift" keyPressed={this.keyPressedHandler} active={(this.props.currentState === 'shift')} />
         </div>
+
         <div className="row">
-          {['fn','ctrl','alt','cmd'].map(key => (
-            <Key key={key} name={key} keyPressed={this.keyPressedHandler} type={key} active={(this.props.currentState === key)} />
+          {keyboardLayout[5].map((keyCode, i) => (
+            <Key
+              key={i}
+              code={keyCode}
+              name={this.codeToName(keyCode)}
+              value={this.codeToValue(keyCode)}
+              keyPressed={this.keyPressedHandler}
+              currentKey={this.props.currentKey}
+              currentState={this.props.currentState} />
           ))}
-          <Key value="&nbsp;" name="spacebar" keyPressed={this.keyPressedHandler} type="spacebar" />
-          {['cmd', 'alt'].map(key => (
-            <Key key={key} name={key} keyPressed={this.keyPressedHandler} type={key} active={(this.props.currentState === key)} />
-          ))}
-          <div className="navigations">
-            <div className="navigations-top">
-              <Key value="▲" type="navigation top" />
-            </div>
-            <div className="navigations-bottom">
-              <Key value="◀" type="navigation" />
-              <Key value="▼" type="navigation" />
-              <Key value="▶" type="navigation" />
-            </div>
-          </div>
         </div>
       </div>
     );

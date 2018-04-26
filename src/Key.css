@@ -10,20 +10,25 @@
   cursor: pointer;
 }
 
+.key.key-8,
 .key.tab,
 .key.delete {
   flex: 1.5;
 }
 
+.key.key-20,
+.key.key-13,
 .key.capslock,
 .key.return {
   flex: 2;
 }
 
+.key.key-16,
 .key.shift {
   flex: 1.75;
 }
 
+.key.key-32,
 .key.spacebar {
   flex: 5;
 }
@@ -36,6 +41,7 @@
   font-size: 6px;
 }
 
+.key.key-38,
 .key.navigation.top {
   flex: initial;
 }
